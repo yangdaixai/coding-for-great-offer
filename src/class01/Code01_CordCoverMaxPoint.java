@@ -28,16 +28,20 @@ public class Code01_CordCoverMaxPoint {
 		return index;
 	}
 
+	//使用窗口的方法
 	public static int maxPoint2(int[] arr, int L) {
 		int left = 0;
 		int right = 0;
 		int N = arr.length;
 		int max = 0;
+		//left 固定，right 往有到 left和right的距离不超过绳子长度(arr[right] - arr[left] <= L)
 		while (left < N) {
+			//right不能越界 && right和left的距离不大于L(绳子的长度)
 			while (right < N && arr[right] - arr[left] <= L) {
 				right++;
 			}
-			max = Math.max(max, right - (left++));
+			max = Math.max(max, right - (left));
+			left++;
 		}
 		return max;
 	}

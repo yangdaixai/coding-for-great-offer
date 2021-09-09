@@ -11,20 +11,25 @@ public class Code04_MinSwapStep {
 			return 0;
 		}
 		char[] str = s.toCharArray();
+		//所有的G都放在左侧
 		int step1 = 0;
 		int gi = 0;
 		for (int i = 0; i < str.length; i++) {
 			if (str[i] == 'G') {
-				step1 += i - (gi++);
+				step1 += i - (gi);
+				gi++;
 			}
 		}
+		//所有的B都放在左侧
 		int step2 = 0;
 		int bi = 0;
 		for (int i = 0; i < str.length; i++) {
 			if (str[i] == 'B') {
-				step2 += i - (bi++);
+				step2 += i - (bi);
+				bi++;
 			}
 		}
+		//返回最小的
 		return Math.min(step1, step2);
 	}
 
